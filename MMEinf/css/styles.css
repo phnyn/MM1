@@ -1,0 +1,102 @@
+body {
+    background-image: url("https://static.thenounproject.com/png/1111905-200.png");
+}
+
+#main{
+    background-color: rgb(201, 243, 243, 0.8);
+    border-radius: 10px;
+    width: 1000px;
+    height: 650px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+}
+
+/* Inside of Main*/
+#logo {
+    text-align: center;
+}
+
+.leftbody, .rightbody, #wholebody{
+    height: 610px;
+}
+
+.part-dec{
+    padding: 10px;
+    background-color: rgba(186, 229, 229, 0.911);
+    border-radius: 10px;
+    opacity: 1;
+}
+
+.part-dec > h2{
+    text-align: center;
+}
+
+/*center button at the bottom*/
+.centerbBtn{
+    position: absolute;
+    left: 50%;
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);  
+    bottom: 2%;
+}
+
+/* - - - - - - - - - - - - - - -  whole body container - - - - - - - - - - - - - - -  */
+/* index.html */
+
+#wholebody{
+    position: relative;
+    text-align: center;
+}
+
+#wholebody >h1,h2{
+    padding: 20px;
+}
+
+/* - - - - - - - - - - - - - - -  leftbody container - - - - - - - - - - - - - - -  */
+#canvaContainer{
+    height: 80%;
+}
+
+#canvaContainer > h2 {
+    text-align: center;
+}
+
+/* DRAWING.HTML */
+#canvaContainer > #myCanvas{
+    height: 90%;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+}
+
+#toolContainer{
+    margin-top: 11px;
+    height: 16%;
+}
+
+/* SETTING.HTML */
+#settingContainer {
+    position: relative;
+    height: 98%;
+    text-align: center;
+}
+
+#settingContainer > h2{
+    padding-bottom: 10px;
+}
+
+#settingForm > h4{
+    padding-top: 20px;
+}
+
+#invite{
+    padding: 40px;
+}
+
+/* - - - - - - - - - - - - - - -  rightbody container - - - - - - - - - - - - - - -  */
+#sidebar{
+    position: relative;
+    height: 98%;
+    text-align: center;
+}
