@@ -60,6 +60,7 @@ body {
 }
 
 #canvaContainer > h2 {
+    padding: 0px;
     text-align: center;
 }
 
@@ -92,6 +93,11 @@ body {
 
 #invite{
     padding: 40px;
+}
+
+#invite > input{
+    width: 300px;
+    text-align: center;
 }
 
 /* - - - - - - - - - - - - - - -  rightbody container - - - - - - - - - - - - - - -  */

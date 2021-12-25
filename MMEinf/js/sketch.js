@@ -11,7 +11,6 @@ function setup() {
     background(255,255,255);
 
     brushButton = createButton('brush');
-
     brushButton.parent('brushBtn');
     //brushButton.position(10, 460);
     brushButton.mousePressed(noErase);

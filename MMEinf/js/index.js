@@ -1,5 +1,5 @@
 var uName;
-var host = true;
+var host = false;
 
 window.onload = isHost;
 
