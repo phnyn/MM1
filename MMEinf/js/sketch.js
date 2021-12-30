@@ -1,13 +1,14 @@
 let brushButton, eraserButton, clearButton, lineButton, sizeSlider, colorPicker, undoButton, pickButton, redoButton;
 let strokeColor = 'black';
+let canvas;
 
 function setup() {
     let height = document.getElementById("myCanvas").clientHeight;
     let width = document.getElementById("myCanvas").clientWidth;
 
-    let canvas = createCanvas(width, height);
+    canvas = createCanvas(width, height);
     canvas.parent('myCanvas');
-    background(255,255,255);
+    background(255);
 
     brushButton = createButton('brush');
     brushButton.parent('brushBtn');
@@ -107,5 +108,8 @@ function redoPrevState() {
 }
 
 //TODO saveCanvas()?
-
+function canvasToURL(){
+    // let theDataURL;
+    return canvas.toDataURL();
+}
 
