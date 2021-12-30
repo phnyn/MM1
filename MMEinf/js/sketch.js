@@ -41,8 +41,7 @@ function setup() {
 }
 
 function draw() {
-    //TODO remove if-condition for html integration?
-    if(mouseIsPressed && pmouseY <= 450){
+    if(mouseIsPressed){
         line(mouseX, mouseY, pmouseX, pmouseY);
     }
 
@@ -76,8 +75,7 @@ function saveState() {
 }
 
 function mousePressed() {
-    //TODO remove if-condition for html integration?
-    if (pmouseY < 400){
+    if (pmouseY < canvas.height && pmouseY > 0 && pmouseX < canvas.width && pmouseX > 0){
         saveState();
     }
 }
@@ -94,7 +92,6 @@ function undoToPrevState() {
 
 }
 
-//TODO make multiple states redoable?
 function redoPrevState() {
     if (redoState == null) {
         return;
@@ -109,7 +106,6 @@ function redoPrevState() {
 
 //TODO saveCanvas()?
 function canvasToURL(){
-    // let theDataURL;
     return canvas.toDataURL();
 }
 
