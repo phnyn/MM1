@@ -6,6 +6,8 @@ let players;
 /* div container of players */
 let playersDIV;
 
+let playerIcon;
+
 /* calls the function init upon window loading */
 window.onload = function (){
     playersDIV = document.getElementById('players');
@@ -22,12 +24,12 @@ window.onload = function (){
 function showPlayers(){
     playersDIV.innerHTML = '';
 
-    playersDIV.innerHTML += players[0] + " (Host) <br/> ";
+    playersDIV.innerHTML += players[0] + "<br/> ";
 
     for(let i = 1; i < players.length; i++){
         let player = players[i];
         playersDIV.innerHTML += "<span id=\"p"+i+"\">" + player + 
-        "<button class=\" kickBtn \" onclick=\"kickPlayer('"+player+"')\">x</button></span></br>";
+        " <span class=\" kickBtn \" onclick=\"kickPlayer('"+player+"')\">X</span></span></br>";
     }
 
     console.log(players);
@@ -36,8 +38,13 @@ function showPlayers(){
 /**
  * Adds [player] to the list of players
  * @param {String} player - new player
+ *  ??? how to display (you) next to player name
  */
 function addPlayer(player){
+    if(players.length == 0){
+        player += "(host)";
+    }
+
     players.push(player);
     showPlayers();
 }
@@ -88,7 +95,7 @@ function copyLink(){
     var copyText = document.getElementById('inviteLink');
     copyText.select();
     navigator.clipboard.writeText(copyText.value);
-    alert("Copied Link " + copyText.value);
+    alert("Kopiert: " + copyText.value);
 }
 
 /**

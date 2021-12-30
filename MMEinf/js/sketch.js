@@ -5,7 +5,7 @@ function setup() {
     var height = document.getElementById("myCanvas").clientHeight;
     var width = document.getElementById("myCanvas").clientWidth;
 
-    alert("height/width " +height +"/" + width);
+    // alert("height/width " +height +"/" + width);
     var canvas = createCanvas(width, height);
     canvas.parent('myCanvas');
     background(255,255,255);

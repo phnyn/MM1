@@ -7,22 +7,41 @@ let playersDIV;
 /* max time */
 let timer;
 
+let currPlayer;
+let isReady;
+
 window.onload = function () {
     players = ["A", "N"];
+    currPlayer = players[0];
+    isReady = false;
     playersDIV = document.getElementById('players');
+    
     showPlayers();
-    countdownTimer(5);
+    countdownTimer(30);
 };
 
+/* COUNTDOWN TIMER */
+//https://www.delftstack.com/de/howto/javascript/count-down-timer-in-javascript/
+
+/**
+ * 
+ * @param {*} num 
+ * @returns 
+ */
 function paddedFormat(num) {
     return num < 10 ? "0" + num : num; 
 }
 
+/**
+ * 
+ * @param {int} time in seconds
+ */
 function countdownTimer(time){
-    let time_minutes = 1; // Value in minutes
-    let time_seconds = 30; // Value in seconds
+	
+    let time_minutes = parseInt(time/60); // Value in minutes
+    let time_seconds = parseInt(time % 60); // Value in seconds
 
-    let duration = time_minutes * 60 + time_seconds;
+    let duration = time;
 
     let element = document.getElementById('timer');
     element.textContent = `${paddedFormat(time_minutes)}:${paddedFormat(time_seconds)}`;
@@ -30,6 +49,11 @@ function countdownTimer(time){
     startCountDown(--duration, element);
 }
 
+/**
+ * 
+ * @param {*} duration 
+ * @param {*} element 
+ */
 function startCountDown(duration, element) {
     let secondsRemaining = duration;
     let min = 0;
@@ -48,7 +72,6 @@ function startCountDown(duration, element) {
         };
     }, 1000);
 }
-//https://www.delftstack.com/de/howto/javascript/count-down-timer-in-javascript/
 
 /* P L A Y E R */
 
@@ -58,7 +81,7 @@ function startCountDown(duration, element) {
  function showPlayers(){
     playersDIV.innerHTML = '';
 
-    playersDIV.innerHTML += players[0] + " (Host) <br/> ";
+    playersDIV.innerHTML += players[0] + "<br/> ";
 
     for(let i = 1; i < players.length; i++){
         let player = players[i];
@@ -66,15 +89,20 @@ function startCountDown(duration, element) {
     }
 }
 
-function ready(player){
+// only ONE ready!
+function ready(){
     let position = 0;
+
+    player = currPlayer;
 
     for(let j; j < players.length; j++){
         if(players[j] == player)
             position = j;
     }
-    //delete 1 element at [position] in players
-    players.splice(position,1);
 
+    if(isReady == false){
+        players[position] += "&#10003";	
+        isReady = true;
+    }
     showPlayers();
 }
