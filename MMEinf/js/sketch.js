@@ -7,7 +7,7 @@ function setup() {
 
     let canvas = createCanvas(width, height);
     canvas.parent('myCanvas');
-    background(255);
+    background(255,255,255);
 
     brushButton = createButton('brush');
     brushButton.parent('brushBtn');
