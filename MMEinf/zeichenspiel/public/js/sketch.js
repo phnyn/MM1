@@ -1,30 +1,21 @@
 let brushButton, eraserButton, clearButton, lineButton, sizeSlider, colorPicker, undoButton, pickButton, redoButton;
 let strokeColor = 'black';
-let canvas;
-var socket;
-var drawing = [];
-var erasing = false;
 
 function setup() {
     let height = document.getElementById("myCanvas").clientHeight;
     let width = document.getElementById("myCanvas").clientWidth;
 
-    canvas = createCanvas(width, height);
+    let canvas = createCanvas(width, height);
     canvas.parent('myCanvas');
     background(255);
 
-    socket = io.connect('http://localhost:3000');
-    socket.on('redirect', () => {
-        window.location.href = "final.html";
-    })
-
     brushButton = createButton('brush');
     brushButton.parent('brushBtn');
-    brushButton.mousePressed(noErase, setBoolEraseFalse);
+    brushButton.mousePressed(noErase);
 
     eraserButton = createButton('erase');
     eraserButton.parent('eraseBtn');
-    eraserButton.mousePressed(erase, setBoolEraseTrue);
+    eraserButton.mousePressed(erase);
 
     clearButton = createButton('clear');
     clearButton.parent('clearBtn');
@@ -49,25 +40,13 @@ function setup() {
 }
 
 function draw() {
-    if(mouseIsPressed){
+    //TODO remove if-condition for html integration?
+    if(mouseIsPressed && pmouseY <= 450){
         line(mouseX, mouseY, pmouseX, pmouseY);
     }
 
     strokeWeight(sizeSlider.value());
     stroke(colorPicker.color());
-}
-
-function setBoolEraseTrue() {
-    erasing = true;
-} 
-
-function setBoolEraseFalse() {
-    erasing = false;
-} 
-
-function ready() {
-    let cvs = canvas.elt.toDataURL();
-    socket.emit('ready', cvs);
 }
 
 function clearBG() {
@@ -96,7 +75,8 @@ function saveState() {
 }
 
 function mousePressed() {
-    if (pmouseY < canvas.height && pmouseY > 0 && pmouseX < canvas.width && pmouseX > 0){
+    //TODO remove if-condition for html integration?
+    if (pmouseY < 400){
         saveState();
     }
 }
@@ -113,6 +93,7 @@ function undoToPrevState() {
 
 }
 
+//TODO make multiple states redoable?
 function redoPrevState() {
     if (redoState == null) {
         return;
@@ -125,4 +106,6 @@ function redoPrevState() {
     image(redoState, 0, 0);
 }
 
-document.getElementById("readyBtn").addEventListener("click", ready);
+//TODO saveCanvas()?
+
+

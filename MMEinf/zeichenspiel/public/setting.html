@@ -6,21 +6,23 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.socket.io/4.4.0/socket.io.min.js" integrity="sha384-1fOn6VtTq3PWwfsOrk45LnYcGosJwzMHv+Xh/Jx5303FVOXzEnw0EpLv30mtjmlj" crossorigin="anonymous"></script>
+		
         <link href="css/styles.css" rel="stylesheet">
     </head>
 
     <body>
         <main id="main" class="container-fluid">
-            <div id="logo" class="border col-sm-12">ich bin ein logo</div>
+            <div id="logo" class="col-sm-12"><img src="img/logo.png"></div>
 
             <div class="row">
-                <div class="leftbody border col-sm-8">
+                <div class="leftbody col-sm-8">
                     <div id="settingContainer" class="part-dec">
-                        <h2>Einstellungen</h2>
+                        <h2>Settings</h2>
 
                         <div id="formContainer" name="formContainer">
                             <form id="settingForm" name="settingForm">
-                                <h4> Zeitbegrenzung</h4>
+                                <h4> Timelimit</h4>
                                 <select id="settingTime" name="settingTime">
                                     <option value="1">1 min</option>
                                     <option value="2">2 min</option>
@@ -28,29 +30,23 @@
                                     <option value="3">4 min</option>
                                     <option value="3">5 min</option>
                                 </select> <br/>
-    
-                                <h4> Wahl der Körperteile</h4>
-                                <select id="settingBodypart" name="settingBodypart">
-                                    <option value="Kopf">Kopf</option>
-                                    <option value="Oberkörper">Oberkörper</option>
-                                    <option value="Beine">Beine</option>
-                                </select>
+                       
                             </form>
                         </div>
 
                         <div id="invite" name="invite">
-                            <h4>Spieler einladen</h4>
+                            <h4>Invite Players</h4>
                             <input type="text" value="link" id="inviteLink"></br>
-                            <button onclick="copyLink()">Link Kopieren</button> </br>
+                            <button onclick="copyLink()">Copy Link!</button> </br>
                         </div>
                     
-                        <button id="startBtn" class="centerbBtn" onclick="startGame()">SPIEL STARTEN</button>               
+                        <button id="startBtn" class="centerbBtn" onclick="startGame()">START GAME</button>               
                     </div>
                 </div>
 
-                <div class="rightbody border col-sm-4">
+                <div class="rightbody col-sm-4">
                     <div id="sidebar" class="part-dec">
-                        <h2> Mitspieler</h2>
+                        <h2> Players </h2>
                         <div id="players"></div>
                     </div>
                 </div>

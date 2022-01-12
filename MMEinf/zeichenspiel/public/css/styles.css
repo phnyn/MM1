@@ -1,0 +1,296 @@
+*{
+    font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+
+}
+
+/*https://www.magicpattern.design/tools/css-backgrounds*/
+body {
+    background-image: url("https://static.thenounproject.com/png/1111905-200.png");
+    background-color: #f9f9f9;
+    opacity: 1;
+    background: radial-gradient(circle, transparent 20%, #f9f9f9 20%, #f9f9f9 80%, transparent 80%, transparent), radial-gradient(circle, transparent 20%, #f9f9f9 20%, #f9f9f9 80%, transparent 80%, transparent) 47.5px 47.5px, linear-gradient(rgba(201, 242, 242, 0.4) 3.8000000000000003px, transparent 3.8000000000000003px) 0 -1.9000000000000001px, linear-gradient(90deg, rgba(201, 242, 242, 0.4) 3.8000000000000003px, #f9f9f9 3.8000000000000003px) -1.9000000000000001px 0;
+    background-size: 95px 95px, 95px 95px, 47.5px 47.5px, 47.5px 47.5px;
+}
+
+#main{
+    background-color: rgba(201, 243, 243, 0.5);
+    border-radius: 10px;
+    width: 1000px;
+    height: 650px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: rgba(0, 0, 0, 0.1) 0 1px 3px 0;
+    box-sizing: border-box;
+}
+
+/* Inside of Main*/
+#logo {
+    text-align: center;
+    height: 70px;
+}
+
+#logo > img{
+    height: 65px;
+}
+
+.leftbody, .rightbody, #wholebody{
+    height: 565px;
+}
+
+.part-dec{
+    padding: 10px;
+    background-color: rgba(186, 229, 229, 0.911);
+    border-radius: 10px;
+    opacity: 1;
+    border: 0.5px solid rgba(0, 0, 0, 0.05);
+    box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px 0;
+    box-sizing: border-box;
+}
+
+.part-dec > h2{
+    text-align: center;
+}
+
+/*center button at the bottom*/
+.centerbBtn{
+    position: absolute;
+    left: 50%;
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);  
+    bottom: 2%;
+}
+
+/* https://getcssscan.com/css-buttons-examples - button 6*/
+/* CSS */
+
+/* CSS */
+button {
+  align-items: center;
+  background-color: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: .25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.85);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 0.5;
+  margin: 2px;
+  min-height: 0.8rem;
+  padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+}
+
+button:hover{
+background-color: rgba(238, 255, 255, 0.511);
+  border-color: rgba(0, 0, 0, 0.185);
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+/* - - - - - - - - - - - - - - -  whole body container - - - - - - - - - - - - - - -  */
+/* index.html */
+
+#wholebody{
+    position: relative;
+    text-align: center;
+}
+
+#wholebody >h1,h2{
+    padding: 20px;
+}
+
+/* final.html */
+
+#wholebody > img{
+    height: 85%;
+}
+/* - - - - - - - - - - - - - - -  leftbody container - - - - - - - - - - - - - - -  */
+#canvaContainer{
+    height: 80%;
+}
+
+#canvaContainer > h2 {
+    padding: 0px;
+    text-align: center;
+}
+
+/* DRAWING.HTML */
+#canvaContainer > #myCanvas{
+    height: 90%;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+}
+
+#toolContainer{
+    margin-top: 11px;
+    height: 16%;
+}
+
+
+/* SETTING.HTML */
+#settingContainer {
+    position: relative;
+    height: 98%;
+    text-align: center;
+}
+
+#settingContainer > h2{
+    padding-bottom: 10px;
+}
+
+#settingForm > h4{
+    padding-top: 20px;
+}
+
+#invite{
+    padding: 40px;
+}
+
+#invite > input{
+    width: 300px;
+    text-align: center;
+}
+
+span{
+    color:#000000;
+}
+
+.circle{
+    float: left;
+    margin-left: 20px;
+    margin-top: 20px;
+    width:40%;
+    height:20;
+    font-size:15px;
+    font-weight: 400;
+    color:#000;
+    text-align:center;
+    line-height:0;
+    padding:20% 0;
+    border-radius:50%;
+    background:rgba(201, 243, 243, 0.5);
+    background-color: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+    box-sizing: border-box;
+    color: rgba(0, 0, 0, 0.85);
+}
+
+.circle:hover{
+    background-color: rgba(238, 255, 255, 0.511);
+  border-color: rgba(0, 0, 0, 0.185);
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+
+.kickBtn{
+    background: #ffffff;
+    color: #ff0000;
+    padding:0px 5px;
+    margin-bottom: 10px;
+    border-radius: 50%;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: right;
+}
+
+.kickBtn:hover{
+    background: #ff0000;
+    color: #fff;
+}
+
+/* - - - - - - - - - - - - - - -  rightbody container - - - - - - - - - - - - - - -  */
+#sidebar{
+    position: relative;
+    height: 98%;
+    text-align: center;
+}
+
+#sidebar > h2{
+    padding: 5px;
+}
+
+.body{
+    position: relative;
+    text-align: center;
+}
+
+.body > img{
+    width: 100%;
+    display: block;
+}
+
+.body > span{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: rgba(201, 243, 243, 0.8);
+}
+
+.greyout{
+    /*-webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);*/
+    filter: grayscale(100%); 
+}
+
+.ready{
+    filter: hue-rotate(90deg);
+}
+
+.painting{
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   display: flex;
+   align-items: center;
+   background-color: rgba(255,255,255,0.7);
+ }
+
+/* Creating the dots */
+.painting > span{
+    animation: loading 2s linear infinite;
+  }
+
+/* Creating the loading animation*/
+ @keyframes loading {
+    0%,100%{ opacity: 0;}
+    50% {opacity: 1;}
+}
+
+span:nth-child(1){
+   animation-delay: 0.1s;
+ }
+ span:nth-child(2){
+   animation-delay: 0.9s;
+ }
+ span:nth-child(3){
+   animation-delay: 1.5s;
+ }
+ 
+ select, input{
+    background:rgba(201, 243, 243, 0.5);
+    background-color: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+    box-sizing: border-box;
+    color: rgba(0, 0, 0, 0.85);
+ }
+
