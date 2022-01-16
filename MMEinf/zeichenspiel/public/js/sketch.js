@@ -1,6 +1,8 @@
 let brushButton, eraserButton, clearButton, lineButton, sizeSlider, colorPicker, undoButton, pickButton, redoButton;
 let strokeColor = 'black';
 
+// let markButton;
+
 function setup() {
     let height = document.getElementById("myCanvas").clientHeight;
     let width = document.getElementById("myCanvas").clientWidth;
@@ -42,16 +44,29 @@ function setup() {
     colorPicker.size(30, 30)
     colorPicker.parent('colorpickerBtn');
 
+    // markButton = createButton('TEST');
+    // markButton.size(30,30);
+    // markButton.parent('markBtn');
+    // markButton.mousePressed(setImageVisible('mark', 'hidden'));
+
     saveState();
 }
 
 function draw() {
+    //TODO change to curve()?
     if(mouseIsPressed){
         line(mouseX, mouseY, pmouseX, pmouseY);
+        cursor(CROSS);
+    } else {
+        cursor(ARROW);
     }
 
     strokeWeight(sizeSlider.value());
     stroke(colorPicker.color());
+}
+
+function cursorHand() {
+    cursor(HAND);
 }
 
 function clearBG() {
@@ -115,6 +130,5 @@ function canvasToURL(){
 }
 
 function isBlank() {
-
-        return canvas.toDataURL() === document.getElementById('blank').toDataURL();
+    return canvas.toDataURL() === document.getElementById('blank').toDataURL();
 }

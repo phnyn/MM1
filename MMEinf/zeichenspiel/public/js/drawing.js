@@ -35,6 +35,9 @@ window.onload = function () {
     showBodypart();
 };
 
+
+
+
 /* COUNTDOWN TIMER */
 //https://www.delftstack.com/de/howto/javascript/count-down-timer-in-javascript/
 
@@ -87,6 +90,13 @@ function startCountDown(duration, element) {
     }, 1000);
 }
 
+/* Zeichenbegrenzung */
+
+function setImageVisible(id) {
+    let img = document.getElementById(id);
+    img.style.visibility = (document.getElementById('markBtn').checked ? 'visible' : 'hidden');
+}
+
 /* P L A Y E R */
 
 /**
@@ -122,7 +132,6 @@ function Player(name, currentPlayer, isHost, bodypart, ready){
 
         // classes 
         if(player.ready === true){
-            // painting = ' &#20; R E A D Y ! &#10004; ';
             painting = 'R E A D Y !';
             greyout = 'ready';
         } else if(player === getCurrentPlayer()){
