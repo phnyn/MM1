@@ -172,6 +172,10 @@ background-color: rgba(238, 255, 255, 0.511);
     z-index: 1;
 }
 
+#mark {
+    pointer-events: none;
+}
+
 #toolContainer{
     margin-top: 0px;
     height: 14%;
