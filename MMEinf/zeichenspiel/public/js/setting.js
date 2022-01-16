@@ -18,8 +18,8 @@ window.onload = function (){
     playersDIV = document.getElementById('players');
     //players  = ["Arnold", "Bernd", "Claudia", "Diona"];
 
-    const a = new Player("Alexander", false, true,"",false);
-    const b = new Player("Paul", true ,false,"", false);
+    const a = new Player("Alexander", false, false,"",false);
+    const b = new Player("Paul", true ,true,"", false);
     const c = new Player("Phuong", false , false,"", false);
     const d = new Player("Sebastian", false, false,"", false);
 
@@ -146,7 +146,7 @@ function displayStart(isHost){
     time = select.options[select.selectedIndex].value;
 
     if(!currentPlayer.isHost){
-        document.getElementById('minute').innerHTML = time + " minute";
+        document.getElementById('minute').innerHTML = "<br/>" + time + " min<br>";
         document.getElementById('settingTime').style="display:none";
         document.getElementById('startBtn').style="display:none";
     }
