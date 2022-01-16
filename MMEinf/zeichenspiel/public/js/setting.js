@@ -18,8 +18,8 @@ window.onload = function (){
     playersDIV = document.getElementById('players');
     //players  = ["Arnold", "Bernd", "Claudia", "Diona"];
 
-    const a = new Player("Alexander", false, false,"",false);
-    const b = new Player("Paul", true ,true,"", false);
+    const a = new Player("Alexander", false, true,"",false);
+    const b = new Player("Paul", true ,false,"", false);
     const c = new Player("Phuong", false , false,"", false);
     const d = new Player("Sebastian", false, false,"", false);
 
@@ -32,6 +32,7 @@ window.onload = function (){
     players = [a,b,c,d];
     inviteLink("drawtogether.com/invite/1234");
     showPlayers();
+    displayStart();
 }
 
 /* P L A Y E R */
@@ -134,15 +135,22 @@ function copyLink(){
  * TODO: time & bodypart where?
  */
 function startGame(){
-    let select = document.getElementById('settingBodypart');
-    bodypart = select.options[select.selectedIndex].value;
-
-    select = document.getElementById('settingTime');
+    let select = document.getElementById('settingTime');
     time = select.options[select.selectedIndex].value;
     
-    alert(bodypart + " " + time);
+    alert(time);
 }
 
+function displayStart(isHost){
+    let select = document.getElementById('settingTime');
+    time = select.options[select.selectedIndex].value;
+
+    if(!currentPlayer.isHost){
+        document.getElementById('minute').innerHTML = time + " minute";
+        document.getElementById('settingTime').style="display:none";
+        document.getElementById('startBtn').style="display:none";
+    }
+}
 
 function Player(name, currentPlayer, isHost, bodypart, ready){
     this.name = name;
