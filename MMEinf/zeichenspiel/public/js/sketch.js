@@ -75,7 +75,9 @@ function keyPressed(e) {
 }
 
 function saveState() {
-    previousStates.push(get());
+    if (!isBlank()){
+        previousStates.push(get());
+    }
 }
 
 function mousePressed() {
@@ -112,3 +114,7 @@ function canvasToURL(){
     return canvas.toDataURL();
 }
 
+function isBlank() {
+
+        return canvas.toDataURL() === document.getElementById('blank').toDataURL();
+}
