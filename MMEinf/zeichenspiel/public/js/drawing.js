@@ -109,7 +109,7 @@ function Player(name, currentPlayer, isHost, bodypart, ready){
  * Displays all the players in the sidebar
  */ 
  function showPlayers(){
-    let painting, greyout, player,element;
+    let painting, greyout, player, element;
 
     for(let i=0; i < players.length; i++){
         let role = " ";
