@@ -5,18 +5,22 @@
 
 /*https://www.magicpattern.design/tools/css-backgrounds*/
 body {
-    background-image: url("https://static.thenounproject.com/png/1111905-200.png");
-    background-color: #f9f9f9;
-    opacity: 1;
-    background: radial-gradient(circle, transparent 20%, #f9f9f9 20%, #f9f9f9 80%, transparent 80%, transparent), radial-gradient(circle, transparent 20%, #f9f9f9 20%, #f9f9f9 80%, transparent 80%, transparent) 47.5px 47.5px, linear-gradient(rgba(201, 242, 242, 0.4) 3.8000000000000003px, transparent 3.8000000000000003px) 0 -1.9000000000000001px, linear-gradient(90deg, rgba(201, 242, 242, 0.4) 3.8000000000000003px, #f9f9f9 3.8000000000000003px) -1.9000000000000001px 0;
-    background-size: 95px 95px, 95px 95px, 47.5px 47.5px, 47.5px 47.5px;
+    /*background-image: url("https://static.thenounproject.com/png/1111905-200.png");*/
+    /*background-color: #f9f9f9;*/
+    /*opacity: 1;*/
+    /*background: radial-gradient(circle, transparent 20%, #f9f9f9 20%, #f9f9f9 80%, transparent 80%, transparent), radial-gradient(circle, transparent 20%, #f9f9f9 20%, #f9f9f9 80%, transparent 80%, transparent) 47.5px 47.5px, linear-gradient(rgba(201, 242, 242, 0.4) 3.8000000000000003px, transparent 3.8000000000000003px) 0 -1.9000000000000001px, linear-gradient(90deg, rgba(201, 242, 242, 0.4) 3.8000000000000003px, #f9f9f9 3.8000000000000003px) -1.9000000000000001px 0;*/
+    /*background-size: 95px 95px, 95px 95px, 47.5px 47.5px, 47.5px 47.5px;*/
+    background-image: url('../img/bg/background_gradient_2.png');
+    background-repeat: no-repeat;
+    background-size: 200%;
 }
 
 #main{
-    background-color: rgba(201, 243, 243, 0.5);
+    /*background-color: rgba(201, 243, 243, 0.2);*/
+    background-color: rgba(201, 243, 243, 0.2);
     border-radius: 10px;
     width: 1000px;
-    height: 650px;
+    height: 615px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -27,8 +31,8 @@ body {
 
 /* Inside of Main*/
 #logo {
-    text-align: center;
     height: 70px;
+    text-align: center;
 }
 
 #logo > img{
@@ -40,9 +44,9 @@ body {
 }
 
 .part-dec{
-    padding: 10px;
-    background-color: rgba(186, 229, 229, 0.911);
-    border-radius: 10px;
+    padding: 20px;
+    background-color: rgba(232, 99, 138, 0.2);
+    border-radius: 5px;
     opacity: 1;
     border: 0.5px solid rgba(0, 0, 0, 0.05);
     box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px 0;
@@ -53,13 +57,15 @@ body {
     text-align: center;
 }
 
-/*center button at the bottom*/
+
+/*ready button at the bottom*/
 .centerbBtn{
     position: absolute;
     left: 50%;
     -ms-transform: translateX(-50%);
-    transform: translateX(-50%);  
-    bottom: 2%;
+    transform: translateX(-50%);
+    bottom: 4%;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 /* https://getcssscan.com/css-buttons-examples - button 6*/
@@ -68,16 +74,16 @@ body {
 /* CSS */
 button {
   align-items: center;
-  background-color: #FFFFFF;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: .25rem;
   box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
   box-sizing: border-box;
   color: rgba(0, 0, 0, 0.85);
   cursor: pointer;
   display: inline-flex;
-  font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size: 13px;
+  /*font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;*/
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
   font-weight: 600;
   justify-content: center;
   line-height: 0.5;
@@ -92,6 +98,8 @@ button {
   touch-action: manipulation;
   vertical-align: baseline;
   width: auto;
+    background: rgba(200, 233, 233, 1);
+    /*background: rgba(201, 223, 233, 1);*/
 }
 
 button:hover{
@@ -107,6 +115,7 @@ background-color: rgba(238, 255, 255, 0.511);
 #wholebody{
     position: relative;
     text-align: center;
+    height: 86.5%;
 }
 
 #wholebody >h1,h2{
@@ -118,6 +127,7 @@ background-color: rgba(238, 255, 255, 0.511);
 #wholebody > img{
     height: 85%;
 }
+
 /* - - - - - - - - - - - - - - -  leftbody container - - - - - - - - - - - - - - -  */
 #canvaContainer{
     height: 80%;
@@ -130,21 +140,21 @@ background-color: rgba(238, 255, 255, 0.511);
 
 /* DRAWING.HTML */
 #canvaContainer > #myCanvas{
-    height: 90%;
+    height: 100%;
     width: 100%;
     background-color: rgb(255, 255, 255);
 }
 
 #toolContainer{
-    margin-top: 11px;
-    height: 16%;
+    margin-top: 0px;
+    height: 14%;
 }
 
 
 /* SETTING.HTML */
 #settingContainer {
     position: relative;
-    height: 98%;
+    height: 94%;
     text-align: center;
 }
 
@@ -152,12 +162,24 @@ background-color: rgba(238, 255, 255, 0.511);
     padding-bottom: 10px;
 }
 
-#settingForm > h4{
-    padding-top: 20px;
+/*#settingForm > h4{*/
+/*    padding-top: 20px;*/
+/*}*/
+
+#settingForm {
+    position: relative;
+    top: 20px;
+}
+
+#settingTime {
+    position:relative;
+    left: 20px;
 }
 
 #invite{
     padding: 40px;
+    position: relative;
+    top: 40px;
 }
 
 #invite > input{
@@ -165,8 +187,31 @@ background-color: rgba(238, 255, 255, 0.511);
     text-align: center;
 }
 
+#inviteText {
+    position: relative;
+    right: 14px;
+}
+
 span{
     color:#000000;
+}
+
+.headerText {
+    text-shadow: 1px 1px 2px #999999;
+}
+
+#startBtn{
+    font-size: 14pt;
+    padding: 24px 22px;
+    top: 15%;
+}
+
+.title-right {
+    float: right;
+}
+
+.title-left {
+    display: inline;
 }
 
 .circle{
@@ -174,27 +219,26 @@ span{
     margin-left: 20px;
     margin-top: 20px;
     width:40%;
-    height:20;
+    /*height:50%;*/
     font-size:15px;
-    font-weight: 400;
-    color:#000;
+    font-weight: bold;
+    color:#e83b80;
     text-align:center;
     line-height:0;
     padding:20% 0;
     border-radius:50%;
-    background:rgba(201, 243, 243, 0.5);
-    background-color: #FFFFFF;
+    background:rgba(201, 243, 243, 1);
     border: 1px solid rgba(0, 0, 0, 0.1);
     box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
     box-sizing: border-box;
-    color: rgba(0, 0, 0, 0.85);
+    color: rgba(0, 0, 0, 0.75);
 }
 
 .circle:hover{
     background-color: rgba(238, 255, 255, 0.511);
-  border-color: rgba(0, 0, 0, 0.185);
-  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
-  color: rgba(0, 0, 0, 0.65);
+    border-color: rgba(0, 0, 0, 0.185);
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+    color: rgba(0, 0, 0, 0.65);
 }
 
 
@@ -217,7 +261,7 @@ span{
 /* - - - - - - - - - - - - - - -  rightbody container - - - - - - - - - - - - - - -  */
 #sidebar{
     position: relative;
-    height: 98%;
+    height: 94%;
     text-align: center;
 }
 
@@ -233,13 +277,20 @@ span{
 .body > img{
     width: 100%;
     display: block;
+    border-radius: 5px;
 }
 
 .body > span{
     position: absolute;
-    top: 10px;
-    left: 10px;
-    background-color: rgba(201, 243, 243, 0.8);
+    top: 0px;
+    left: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12pt;
+    border-radius: 5px;
+
+    /*font-weight: bold;*/
+
+    background-color: rgba(201, 243, 243, 0.75);
 }
 
 .greyout{
@@ -256,12 +307,13 @@ span{
 
 .painting{
    position: absolute;
-   top: 50%;
+   top: 60%;
    left: 50%;
    transform: translate(-50%, -50%);
    display: flex;
    align-items: center;
-   background-color: rgba(255,255,255,0.7);
+   background-color: rgba(255,255,255,0.75);
+    font-weight: bold;
  }
 
 /* Creating the dots */
@@ -294,3 +346,37 @@ span:nth-child(1){
     color: rgba(0, 0, 0, 0.85);
  }
 
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    /*-khtml-user-select: none; !* Konqueror HTML *!*/
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+.buttons:active {
+    filter: invert(69%);
+}
+
+.buttons {
+    position: relative;
+    left: 10px;
+    bottom: 5px;
+    padding-right: 20px;
+}
+
+#sliderBtn {
+    position: relative;
+    padding-right: 20px;
+}
+
+#redoBtn {
+    left: -5px;
+}
+
+#colorpickerBtn {
+    position: relative;
+    top: 5px;
+}

@@ -83,7 +83,7 @@ function startCountDown(duration, element) {
         secondsRemaining = secondsRemaining - 1;
         if (secondsRemaining < 0) {
              clearInterval(countInterval) 
-        };
+        }
     }, 1000);
 }
 
@@ -115,16 +115,17 @@ function Player(name, currentPlayer, isHost, bodypart, ready){
         let role = " ";
 
         for(let j=0; j < players.length; j++){
-            if(getIndex(players[j]) == i){
+            if(getIndex(players[j]) === i){
                 player = players[j];
             }
         }
 
         // classes 
-        if(player.ready == true){
-            painting = ' &#20; R E A D Y ! &#10004; ';
+        if(player.ready === true){
+            // painting = ' &#20; R E A D Y ! &#10004; ';
+            painting = 'R E A D Y !';
             greyout = 'ready';
-        } else if(player == getCurrentPlayer()){
+        } else if(player === getCurrentPlayer()){
             painting = ' ';
             greyout = null;
         } else{
@@ -133,10 +134,10 @@ function Player(name, currentPlayer, isHost, bodypart, ready){
         }
 
         // roles
-        if(player == getCurrentPlayer()){
+        if(player === getCurrentPlayer()){
             role = "(you)";
         }
-        if(player.isHost == true){
+        if(player.isHost === true){
             role = "(host)";
         }
 
@@ -148,8 +149,7 @@ function Player(name, currentPlayer, isHost, bodypart, ready){
 }
 
 function showBodypart(){
-    let bodypart = getCurrentPlayer().bodypart;
-    document.getElementById('myBodypart').innerText = bodypart;
+    document.getElementById('myBodypart').innerText = getCurrentPlayer().bodypart;
 }
 
 /**
@@ -160,10 +160,10 @@ function ready(){
     let player = getCurrentPlayer();
     let position = getIndex(player);
 
-    if(player.ready == false){
+    if(player.ready === false){
         let element = document.getElementById('body-'+position);
         element.getElementsByTagName('img')[0].classList.add('ready');
-        element.getElementsByClassName('painting')[0].innerHTML = "&#20; R E A D Y ! &#10004; ";
+        element.getElementsByClassName('painting')[0].innerHTML = " R E A D Y !";
         player.ready = true;
     }
 }
@@ -175,7 +175,7 @@ function ready(){
 function getCurrentPlayer(){
     let current; 
     for(let i=0; i < players.length; i++){
-        if(players[i].currentPlayer == true){
+        if(players[i].currentPlayer === true){
            current = players[i];
         }
     }

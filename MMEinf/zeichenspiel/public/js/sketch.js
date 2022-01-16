@@ -9,39 +9,45 @@ function setup() {
     canvas.parent('myCanvas');
     background(255);
 
-    brushButton = createButton('brush');
+    brushButton = createImg('./img/icons/paint-brush.png');
+    brushButton.size(AUTO,30);
     brushButton.parent('brushBtn');
     brushButton.mousePressed(noErase);
 
-    eraserButton = createButton('erase');
+    eraserButton = createImg('./img/icons/eraser.png');
+    eraserButton.size(AUTO,30);
     eraserButton.parent('eraseBtn');
     eraserButton.mousePressed(erase);
 
-    clearButton = createButton('clear');
+
+    clearButton = createImg('./img/icons/bin.png');
+    clearButton.size(AUTO,30);
     clearButton.parent('clearBtn');
     clearButton.mousePressed(clearBG);
 
-    undoButton = createButton('undo');
+    undoButton = createImg('./img/icons/undo.png');
+    undoButton.size(AUTO,30);
     undoButton.parent('undoBtn');
     undoButton.mousePressed(undoToPrevState);
 
-    redoButton = createButton('redo');
+    redoButton = createImg('./img/icons/redo.png');
+    redoButton.size(AUTO,30);
     redoButton.parent('redoBtn');
     redoButton.mousePressed(redoPrevState);
 
-    sizeSlider = createSlider(1, 50, 10);
+    sizeSlider = createSlider(1, 35, 7);
     sizeSlider.parent('sliderBtn');
     sizeSlider.style('width', '100px');
 
     colorPicker = createColorPicker('black');
+    colorPicker.size(AUTO, 30)
     colorPicker.parent('colorpickerBtn');
 
     saveState();
 }
 
 function draw() {
-    //TODO remove if-condition for html integration?
-    if(mouseIsPressed && pmouseY <= 450){
+    if(mouseIsPressed){
         line(mouseX, mouseY, pmouseX, pmouseY);
     }
 
@@ -75,8 +81,7 @@ function saveState() {
 }
 
 function mousePressed() {
-    //TODO remove if-condition for html integration?
-    if (pmouseY < 400){
+    if (pmouseY < canvas.height && pmouseY > 0 && pmouseX < canvas.width && pmouseX > 0){
         saveState();
     }
 }
@@ -93,7 +98,6 @@ function undoToPrevState() {
 
 }
 
-//TODO make multiple states redoable?
 function redoPrevState() {
     if (redoState == null) {
         return;
@@ -106,6 +110,7 @@ function redoPrevState() {
     image(redoState, 0, 0);
 }
 
-//TODO saveCanvas()?
-
+function canvasToURL(){
+    return canvas.toDataURL();
+}
 
