@@ -10,28 +10,27 @@ function setup() {
     background(255);
 
     brushButton = createImg('./img/icons/paint-brush.png');
-    brushButton.size(AUTO,30);
+    brushButton.size(30,30);
     brushButton.parent('brushBtn');
     brushButton.mousePressed(noErase);
 
     eraserButton = createImg('./img/icons/eraser.png');
-    eraserButton.size(AUTO,30);
+    eraserButton.size(30,30);
     eraserButton.parent('eraseBtn');
-    eraserButton.mousePressed(erase);
-
+    // eraserButton.mousePressed(erase);
 
     clearButton = createImg('./img/icons/bin.png');
-    clearButton.size(AUTO,30);
+    clearButton.size(30,30);
     clearButton.parent('clearBtn');
     clearButton.mousePressed(clearBG);
 
     undoButton = createImg('./img/icons/undo.png');
-    undoButton.size(AUTO,30);
+    undoButton.size(30,30);
     undoButton.parent('undoBtn');
     undoButton.mousePressed(undoToPrevState);
 
     redoButton = createImg('./img/icons/redo.png');
-    redoButton.size(AUTO,30);
+    redoButton.size(30,30);
     redoButton.parent('redoBtn');
     redoButton.mousePressed(redoPrevState);
 
@@ -40,7 +39,7 @@ function setup() {
     sizeSlider.style('width', '100px');
 
     colorPicker = createColorPicker('black');
-    colorPicker.size(AUTO, 30)
+    colorPicker.size(30, 30)
     colorPicker.parent('colorpickerBtn');
 
     saveState();
@@ -59,7 +58,6 @@ function clearBG() {
     background(255);
 }
 
-//TODO UNDO/REDO
 const previousStates = [];
 let redoState = null;
 let redone = false;
