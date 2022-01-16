@@ -44,8 +44,7 @@ function showPlayers(){
     playersDIV.innerHTML = '';
 
     for(let i = 0; i < players.length; i++){
-
-        let kickBtn = " <span class=\" kickBtn \" onclick=\"kickPlayer('"+players[i]+"')\">X</span>";
+        let kickBtn = " <span class=\" kickBtn \" onclick=\"kickPlayer('"+players[i].name+"')\">X</span>";
         let role = "";
         
         if(players[i].isHost){
@@ -81,15 +80,14 @@ function addPlayer(player){
  */
  function kickPlayer(player){
     let position;
-
+	
     for(let j=0; j < players.length; j++){
-        if(players[j] == player){
+        if(players[j].name == player){
             position = j;
         }
     }
-    //delete 1 element at [position] in players
+	    //delete 1 element at [position] in players
     players.splice(position,1);
-
     showPlayers();
 }
 
