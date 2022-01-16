@@ -115,6 +115,5 @@ function canvasToURL(){
 }
 
 function isBlank() {
-
-        return canvas.toDataURL() === document.getElementById('blank').toDataURL();
+    return canvas.toDataURL() === document.getElementById('blank').toDataURL();
 }

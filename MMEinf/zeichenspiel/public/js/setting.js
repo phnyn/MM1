@@ -108,8 +108,8 @@ function inviteLink(link){
 function copyLink(){
     let copyText = document.getElementById('inviteLink');
     copyText.select();
-    window.navigator.clipboard.writeText(copyText.value);
-    alert("Copied: " + copyText.value);
+    navigator.clipboard.writeText(copyText.value);
+    // alert("Copied: " + copyText.value);
 }
 
 /**

@@ -122,7 +122,6 @@ function Player(name, currentPlayer, isHost, bodypart, ready){
 
         // classes 
         if(player.ready === true){
-            // painting = ' &#20; R E A D Y ! &#10004; ';
             painting = 'R E A D Y !';
             greyout = 'ready';
         } else if(player === getCurrentPlayer()){
