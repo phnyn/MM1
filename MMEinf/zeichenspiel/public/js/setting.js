@@ -108,7 +108,7 @@ function inviteLink(link){
 function copyLink(){
     let copyText = document.getElementById('inviteLink');
     copyText.select();
-    navigator.clipboard.writeText(copyText.value);
+    window.navigator.clipboard.writeText(copyText.value);
     alert("Copied: " + copyText.value);
 }
 
