@@ -200,7 +200,8 @@ background-color: rgba(238, 255, 255, 0.511);
 
 input[type=checkbox] {
     transform: scale(2.3);
-    filter: brightness(2.9) saturate(0.2);
+    filter: invert() brightness(2.9) saturate(0.15) hue-rotate(110deg);
+
 }
 
 input[type=slider] {

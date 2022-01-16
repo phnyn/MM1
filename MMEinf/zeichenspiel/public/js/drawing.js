@@ -109,6 +109,14 @@ function startCountDown(duration, element) {
 function setImageVisible(id) {
     let img = document.getElementById(id);
     img.style.visibility = (document.getElementById('markBtn').checked ? 'visible' : 'hidden');
+
+    if (!document.getElementById('markBtn').checked) {
+        document.getElementById('markBtn').style.filter = "brightness(2.9) saturate(0.15) hue-rotate(110deg)";
+    } else {
+        document.getElementById('markBtn').style.filter = " invert() brightness(2.9) saturate(0.15) hue-rotate(110deg)";
+
+    }
+
 }
 
 function changeImage(a) {
