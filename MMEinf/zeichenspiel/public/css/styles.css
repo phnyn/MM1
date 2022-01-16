@@ -136,18 +136,39 @@ background-color: rgba(238, 255, 255, 0.511);
 /* - - - - - - - - - - - - - - -  leftbody container - - - - - - - - - - - - - - -  */
 #canvaContainer{
     height: 80%;
+    position: relative;
 }
 
 #canvaContainer > h2 {
-    padding: 0px;
+    padding: 0;
     text-align: center;
 }
 
 /* DRAWING.HTML */
 #canvaContainer > #myCanvas{
-    height: 100%;
-    width: 100%;
+
+    /*height: 91.5%;*/
+    /*width: 94.5%;*/
+    height: 420px;
+    width: 690px;
     background-color: rgb(255, 255, 255);
+
+    position: absolute;
+    z-index: 0;
+}
+
+/*#canvaContainer > #secondCanvas{*/
+/*    height: 91.5%;*/
+/*    width: 94.5%;*/
+/*    background-color: rgb(255, 255, 255);*/
+
+/*    !*position: absolute;*!*/
+/*    !*z-index: 1;*!*/
+/*}*/
+
+#canvaContainer > #mark {
+    position: absolute;
+    z-index: 1;
 }
 
 #toolContainer{

@@ -35,6 +35,9 @@ window.onload = function () {
     showBodypart();
 };
 
+
+
+
 /* COUNTDOWN TIMER */
 //https://www.delftstack.com/de/howto/javascript/count-down-timer-in-javascript/
 
@@ -85,6 +88,13 @@ function startCountDown(duration, element) {
              clearInterval(countInterval) 
         }
     }, 1000);
+}
+
+/* Zeichenbegrenzung */
+
+function setImageVisible(id) {
+    let img = document.getElementById(id);
+    img.style.visibility = (document.getElementById('markBtn').checked ? 'visible' : 'hidden');
 }
 
 /* P L A Y E R */
