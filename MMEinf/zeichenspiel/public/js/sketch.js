@@ -17,7 +17,7 @@ function setup() {
     eraserButton = createImg('./img/icons/eraser.png');
     eraserButton.size(30,30);
     eraserButton.parent('eraseBtn');
-    // eraserButton.mousePressed(erase);
+    eraserButton.mousePressed(erase);
 
     clearButton = createImg('./img/icons/bin.png');
     clearButton.size(30,30);
