@@ -20,7 +20,7 @@ const body = {
 window.onload = function () {
     /* TODO: entfernen! nur für Testzwecke*/
     const a = new Player("Arnold", false, false, body.head,false);
-    const b = new Player("Bernd", false, true, body.lower, false);
+    const b = new Player("Bernd", false, true, body.upper, false);
     const c = new Player("Claudia", true, false, body.lower, false);
     const d = new Player("Diona", false, false, body.feet, true);
 
@@ -29,6 +29,20 @@ window.onload = function () {
 
     //currentPlayer = "A";
     currentPlayer = getCurrentPlayer();
+
+    // set marks according to currentPlayer
+    let markImg;
+    if (currentPlayer.bodypart === body.head){
+        markImg = "img/marks/head.png";
+    } else if (currentPlayer.bodypart === body.upper) {
+        markImg = "img/marks/torso.png";
+    } else if (currentPlayer.bodypart === body.lower) {
+        markImg = "img/marks/legs.png";
+    } else if (currentPlayer.bodypart === body.feet) {
+        markImg = "img/marks/feet.png";
+    }
+
+    changeImage(markImg);
 
     showPlayers();
     countdownTimer(30);
@@ -95,6 +109,10 @@ function startCountDown(duration, element) {
 function setImageVisible(id) {
     let img = document.getElementById(id);
     img.style.visibility = (document.getElementById('markBtn').checked ? 'visible' : 'hidden');
+}
+
+function changeImage(a) {
+    document.getElementById("mark").src=a;
 }
 
 /* P L A Y E R */

@@ -176,8 +176,37 @@ background-color: rgba(238, 255, 255, 0.511);
     pointer-events: none;
 }
 
+#markBtn {
+    position: relative;
+    margin-right: -125px;
+
+    /*background: #fcfff4;*/
+    /*background: -webkit-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);*/
+    /*background: -moz-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);*/
+    /*background: -o-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);*/
+    /*background: -ms-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);*/
+    /*background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);*/
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfff4', endColorstr='#b3bead',GradientType=0 );
+    /*-webkit-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);*/
+    /*-moz-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);*/
+    /*box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);*/
+}
+#markLabel {
+    position: relative;
+    left: 190px;
+    bottom: 2px;
+    font-weight: bold;
+}
+
+input[type=checkbox] {
+    transform: scale(2.3);
+    filter: brightness(2.9) saturate(0.2);
+}
+
+input[type=slider] {
+}
+
 #toolContainer{
-    margin-top: 0px;
     height: 14%;
 }
 
