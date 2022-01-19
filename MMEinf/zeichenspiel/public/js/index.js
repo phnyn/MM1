@@ -25,7 +25,13 @@ function enterNickname(){
 function redirectLobby() {
     socket.emit("playerdata", (player));
     window.location.href = 'setting.html';
-    print(window.location.href);
+}
+
+function enterPressed() {
+    if(event.key === 'Enter') {
+        event.preventDefault();
+        document.getElementById("indexBtn").click();
+    }
 }
 
 /**
@@ -38,13 +44,6 @@ function isHost(){
     } else {
         document.getElementById('indexTxt').innerHTML ="You got invited!";
         document.getElementById('indexBtn').innerHTML ="Join Game";
-    }
-}
-
-function enterPressed() {
-    if(event.key === 'Enter') {
-        event.preventDefault();
-        document.getElementById("indexBtn").click();
     }
 }
 

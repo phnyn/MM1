@@ -149,7 +149,7 @@ function orderCvsByBodyparts() {
 function getPlayerByName(name) {
     let player;
     for (let i = 0; i<players.length; i++) {
-        if (players[i].name == name) {
+        if (players[i].name === name) {
             player = players[i];
         }
     }
