@@ -21,10 +21,9 @@
 
                 <form id="nameForm">
                     <h2 class="headerText"> Please enter your name:</h2>
-                    <input type="text" placeholder="Name" class="title-left" id="nickname" maxlength= "8" />
+                    <input id="nickname" type="text" placeholder="Name" class="title-left"  maxlength= "8" onkeydown="enterPressed()" />
                     <button id="indexBtn" type="reset" onclick="enterNickname();redirectLobby()">Join Game</button>
                 </form>
-
             </div>
         </main>
         <script src="js/index.js"></script>
