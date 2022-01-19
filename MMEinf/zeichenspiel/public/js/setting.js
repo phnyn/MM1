@@ -31,7 +31,7 @@ window.onload = function (){
                 players[i].currentPlayer = false;
             }
         }
-
+        displayStart();
         showPlayers();
     })
     /*
@@ -59,30 +59,43 @@ window.onload = function (){
  * Only Host can see the kick buttons
  */
 function showPlayers(){
-    playersDIV.innerHTML = '';
-
-    for(let i = 0; i < players.length; i++){
-
-        let kickBtn = " <span class=\" kickBtn \" onclick=\"kickPlayer('"+players[i]+"')\">X</span>";
+    let element;
+    //playersDIV.innerHTML = '';
+    for(let i = 0; i<4;i++){
+        //let content = players[i].name + role + kickBtn;
+        let waiting = "waiting <span>.</span><span>.</span><span>.</span>";
+        element = document.getElementById('p'+i);
+        element.classList.add("greyout");
+        element.getElementsByClassName('playerContent')[0].innerHTML = '';
+        element.getElementsByClassName('waiting')[0].innerHTML = waiting;
+    }
+    
+    for(let i=0; i < players.length; i++){
+        let kickBtn = "<br/><span class=\" kickBtn \" onclick=\"kickPlayer('"+players[i].name+"')\">X</span>";
         let role = "";
-
-        if(players[i].isHost){
-            role = "(host)";
-            kickBtn =" ";
-        }
+        element = document.getElementById('p'+i);
 
         if(players[i].currentPlayer){
             kickBtn =" ";
             role ="(you)";
         }
 
-        if(currentPlayer.isHost != true){ //only host can see kick buttons
-            kickBtn = " ";
+        if(players[i].isHost){
+            role = "(host)";
+            kickBtn =" ";
         }
 
-        playersDIV.innerHTML += "<div id=\"p"+i+"\" class=\"circle\">"+ players[i].name + role + kickBtn+"</div>";
+        if(!currentPlayer.isHost){
+            kickBtn =" ";
+        }
+
+        let content = players[i].name  + role + kickBtn;
+        element.getElementsByClassName('playerContent')[0].innerHTML = content;
+        element.getElementsByClassName('waiting')[0].innerHTML = '';
+        element.classList.remove('greyout');
     }
 }
+
 /**
  * Adds [player] to the list of players
  * @param {String} player - new player
@@ -105,6 +118,10 @@ function kickPlayer(player){
             position = j;
         }
     }
+
+    let id= "p"+position;
+	let div = document.getElementById(id);
+
     socket.emit("kickHelper", players[position]);
     socket.on("kickHelper", player => {
         if (playerEquals(currentPlayer, player)){
@@ -152,6 +169,17 @@ function startGame(){
     alert(time);
     socket.emit("start", time);
 
+}
+
+function displayStart(isHost){
+    let select = document.getElementById('settingTime');
+    time = select.options[select.selectedIndex].value;
+
+    if(!currentPlayer.isHost){
+        document.getElementById('minute').innerHTML = "<br/>" + time + " min<br>";
+        document.getElementById('settingTime').style="display:none";
+        document.getElementById('startBtn').style="display:none";
+    }
 }
 
 socket.on("redirect", () => {
