@@ -51,7 +51,7 @@ window.onload = function () {
     });
 
 
-    
+
 };
 
 
@@ -189,7 +189,7 @@ function Player(name, currentPlayer, isHost, bodypart, ready){
 }
 
 function showBodypart(){
-    document.getElementById('myBodypart').innerText = getCurrentPlayer().bodypart;
+    document.getElementById('myBodypart').innerText = currentPlayer.bodypart;
 }
 
 /**

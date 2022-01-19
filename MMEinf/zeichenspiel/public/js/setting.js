@@ -153,7 +153,7 @@ function copyLink(){
     let copyText = document.getElementById('inviteLink');
     copyText.select();
     navigator.clipboard.writeText(copyText.value);
-    alert("Copied: " + copyText.value);
+    // alert("Copied: " + copyText.value);
 }
 
 /**
@@ -166,7 +166,7 @@ function startGame(){
 
     let select = document.getElementById('settingTime');
     let time = select.options[select.selectedIndex].value;
-    alert(time);
+    // alert(time);
     socket.emit("start", time);
 
 }
