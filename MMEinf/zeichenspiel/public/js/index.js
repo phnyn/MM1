@@ -20,15 +20,12 @@ window.onload = function() {
 function enterNickname(){
     uName = document.getElementById('nickname').value;
     player.name = uName;
-    // alert(uName);
 }
 
 function redirectLobby() {
     socket.emit("playerdata", (player));
     window.location.href = 'setting.html';
     print(window.location.href);
-    // console.log(window.location);
-    // alert(window.location.href);
 }
 
 /**
@@ -41,6 +38,13 @@ function isHost(){
     } else {
         document.getElementById('indexTxt').innerHTML ="You got invited!";
         document.getElementById('indexBtn').innerHTML ="Join Game";
+    }
+}
+
+function enterPressed() {
+    if(event.key === 'Enter') {
+        event.preventDefault();
+        document.getElementById("indexBtn").click();
     }
 }
 
