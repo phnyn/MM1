@@ -12,8 +12,8 @@ function preload() {
 }
 
 function setup() {
-  let width = 350
-  let height = 400
+  let width = 690*0.24;
+  let height = 420*4*0.24;
   let cvs = createCanvas(width, height);
   cvs.parent('final');
 }

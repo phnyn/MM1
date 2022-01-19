@@ -197,6 +197,7 @@ function showBodypart(){
         element.getElementsByClassName('painting')[0].innerHTML = " R E A D Y !";
         player.ready = true;
     }
+    document.getElementById('readyBtn').disabled = true;
     socket.emit("playerIsRdy", currentPlayer);
 }
 

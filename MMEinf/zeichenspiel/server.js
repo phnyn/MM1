@@ -53,6 +53,14 @@ function newConnection(socket) {
         socket.disconnect();
     })
 
+    socket.on("setTime", t => {
+        time = t;
+    })
+
+    socket.on("getTime", () => {
+        socket.emit("setTime", time);
+    })
+
     socket.on("start", t => {
         time = t;
         io.sockets.emit('redirect');

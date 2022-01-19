@@ -1,5 +1,5 @@
 //selected time and bodypart
-let time, bodypart;
+let time = 1, bodypart;
 
 /* list of players */
 let players = [];
@@ -136,21 +136,36 @@ function copyLink(){
  * Starts the game with the selected settings
  */
 function startGame(){
-    let select = document.getElementById('settingTime');
-    let time = select.options[select.selectedIndex].value;
-    socket.emit("start", time);
+    if (players.length == 4) {
+        let select = document.getElementById('settingTime');
+        let time = select.options[select.selectedIndex].value;
+        socket.emit("start", time);
+    }
 }
 
 function displayStart(isHost){
-    let select = document.getElementById('settingTime');
-    time = select.options[select.selectedIndex].value;
+    if (currentPlayer.isHost) {
+        let select = document.getElementById('settingTime');
+        time = select.options[select.selectedIndex].value;
+        socket.emit("setTime", time);
+    }
+    
 
     if(!currentPlayer.isHost){
+        socket.emit("getTime");
         document.getElementById('minute').innerHTML = "<br/>" + time + " min<br>";
         document.getElementById('settingTime').style="display:none";
         document.getElementById('startBtn').style="display:none";
+        
     }
 }
+
+socket.on("setTime", t => {
+    time = t;
+    displayStart();
+})
+
+
 
 socket.on("redirect", () => {
     socket.emit("fromCurrentPlayer", (players));
