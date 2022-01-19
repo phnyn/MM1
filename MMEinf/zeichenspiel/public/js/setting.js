@@ -2,7 +2,7 @@
 let time, bodypart;
 
 /* list of players */
-let players;
+let players = [];
 
 /* the current player/owner of window */
 let currentPlayer;
@@ -13,15 +13,40 @@ let testPlayer, testPlayer2;
 /* div container of players */
 let playersDIV;
 
+var socket = io.connect('http://localhost:3000');
+
 /* calls the function init upon window loading */
 window.onload = function (){
     playersDIV = document.getElementById('players');
     //players  = ["Arnold", "Bernd", "Claudia", "Diona"];
+<<<<<<< Updated upstream
 
     const a = new Player("Alexander", false, false,"",false);
     const b = new Player("Paul", true ,true,"", false);
     const c = new Player("Phuong", false , false,"", false);
     const d = new Player("Sebastian", false, false,"", false);
+=======
+    
+    socket.emit("getPlayers")
+    socket.on("getCurrentPlayer", cPlayer => {
+        currentPlayer = cPlayer;
+    })
+    socket.on("getPlayers", (playerarr) => {
+        players = playerarr;
+        for (let i = 0; i<playerarr.length; i++){
+            if (!playerEquals(players[i], currentPlayer)) {
+                players[i].currentPlayer = false;
+            }
+        }
+        
+        showPlayers();
+    })
+    /*
+    const a = new Player("Arnold", true, true,"",false);
+    const b = new Player("Bernd", false, false,"", false);
+    const c = new Player("Claudia", false , false,"", false);
+    const d = new Player("Diona", false, false,"", false);
+>>>>>>> Stashed changes
 
     currentPlayer = b;
 
@@ -30,10 +55,17 @@ window.onload = function (){
     testPlayer2 = new Player("Alberto", false,false,"",false);
 
     players = [a,b,c,d];
+<<<<<<< Updated upstream
     inviteLink("drawtogether.com/invite/1234");
     showPlayers();
     displayStart();
+=======
+    */
+    inviteLink("drawtogether.com/invite/1234");
+>>>>>>> Stashed changes
 }
+
+
 
 /* P L A Y E R */
 
@@ -100,11 +132,23 @@ function addPlayer(player){
         if(players[j].name == player){
             position = j;
         }
+<<<<<<< Updated upstream
     }	
 	let id= "p"+position;
 	let div = document.getElementById(id);
 	
 	    //delete 1 element at [position] in players
+=======
+    }
+    socket.emit("kickHelper", players[position]);
+    socket.on("kickHelper", player => {
+        if (playerEquals(currentPlayer, player)){
+            socket.emit("kickMe");
+        }
+    })
+
+    //delete 1 element at [position] in players
+>>>>>>> Stashed changes
     players.splice(position,1);
     showPlayers();
 }
@@ -135,6 +179,7 @@ function copyLink(){
  * TODO: time & bodypart where?
  */
 function startGame(){
+<<<<<<< Updated upstream
     let select = document.getElementById('settingTime');
     time = select.options[select.selectedIndex].value;
     
@@ -151,6 +196,22 @@ function displayStart(isHost){
         document.getElementById('startBtn').style="display:none";
     }
 }
+=======
+    //let select = document.getElementById('settingBodypart');
+    //bodypart = select.options[select.selectedIndex].value;
+
+    let select = document.getElementById('settingTime');
+    let time = select.options[select.selectedIndex].value;
+    alert(time);
+    socket.emit("start", time);
+    
+}
+
+socket.on("redirect", () => {
+    socket.emit("fromCurrentPlayer", (players));
+    window.location.href = "drawing.html?"+currentPlayer.name;
+})
+>>>>>>> Stashed changes
 
 function Player(name, currentPlayer, isHost, bodypart, ready){
     this.name = name;
@@ -158,4 +219,12 @@ function Player(name, currentPlayer, isHost, bodypart, ready){
     this.isHost = isHost;
     this.bodypart = bodypart;
     this.ready = ready;
+}
+
+function playerEquals(a, b) {
+    if (a.name == b.name && a.isHost == b.isHost && a.bodypart == b.bodypart && a.ready == b.ready) {
+        return true
+    } else {
+        return false
+    }
 }

@@ -1,7 +1,7 @@
 //import {body} from "./body.js";
 
 /* list of players */
-let players;
+let players = [];
 
 /* max time */
 let timer;
@@ -17,6 +17,7 @@ const body = {
     feet: "feet"
 };
 
+<<<<<<< Updated upstream
 window.onload = function () {
     /* TODO: entfernen! nur für Testzwecke*/
     const a = new Player("Arnold", false, false, body.head,false);
@@ -47,6 +48,27 @@ window.onload = function () {
     showPlayers();
     countdownTimer(30);
     showBodypart();
+=======
+var cP;
+var socket = io.connect('http://localhost:3000');
+
+window.onload = function () {
+    cP = window.location.href.split('?').pop();
+    socket.emit("getPlayersWithBodyPartsAndTime");
+    socket.on("getPlayersWithBodyPartsAndTime", (playersAndTime) => {
+        players = playersAndTime.players;
+        for (let i = 0; i < players.length; i++){
+            players[i].currentPlayer = false;
+            if (players[i].name == cP) {
+                players[i].currentPlayer = true;
+                currentPlayer = players[i];
+            }
+        }
+        showPlayers();
+        countdownTimer(playersAndTime.time * 60);
+        // showBodypart();
+    })
+>>>>>>> Stashed changes
 };
 
 
@@ -99,7 +121,13 @@ function startCountDown(duration, element) {
 
         secondsRemaining = secondsRemaining - 1;
         if (secondsRemaining < 0) {
+<<<<<<< Updated upstream
              clearInterval(countInterval) 
+=======
+             clearInterval(countInterval)
+             let btn = document.getElementById("readyBtn");
+             btn.click();
+>>>>>>> Stashed changes
         }
     }, 1000);
 }
@@ -158,6 +186,10 @@ function Player(name, currentPlayer, isHost, bodypart, ready){
 
         // classes 
         if(player.ready === true){
+<<<<<<< Updated upstream
+=======
+            // painting = ' &#20; R E A D Y ! &#10004; ';
+>>>>>>> Stashed changes
             painting = 'R E A D Y !';
             greyout = 'ready';
         } else if(player === getCurrentPlayer()){
@@ -184,23 +216,31 @@ function Player(name, currentPlayer, isHost, bodypart, ready){
 }
 
 function showBodypart(){
+<<<<<<< Updated upstream
     document.getElementById('myBodypart').innerText = getCurrentPlayer().bodypart;
+=======
+    document.getElementById('myBodypart').innerText = currentPlayer.bodypart;
+>>>>>>> Stashed changes
 }
 
 /**
  * changes the status of the player to ready
  * TODO: currently for the current player!
  */
-function ready(){
-    let player = getCurrentPlayer();
-    let position = getIndex(player);
 
+<<<<<<< Updated upstream
+=======
+function ready2(){
+    let player = currentPlayer
+    let position = getIndex(player);
+>>>>>>> Stashed changes
     if(player.ready === false){
         let element = document.getElementById('body-'+position);
         element.getElementsByTagName('img')[0].classList.add('ready');
         element.getElementsByClassName('painting')[0].innerHTML = " R E A D Y !";
         player.ready = true;
     }
+    socket.emit("playerIsRdy", currentPlayer);
 }
 
 /**
@@ -222,10 +262,10 @@ function getCurrentPlayer(){
  * @param {Player} player 
  * @returns the index of the player according to their bodyparts
  */
-function getIndex(player){
+function getIndex(p){
     let index;
 
-    switch(player.bodypart){
+    switch(p.bodypart){
         case body.head: index = 0; break;
         case body.upper: index = 1; break;
         case body.lower: index = 2;break;
@@ -280,4 +320,23 @@ function getIndex(player){
     }
     return position;
 }*/
+
+socket.on("updateOnPlayer", (updatedPlayer) => {
+    console.log("received playerchange!");
+    for (let i = 0; i < players.length; i++) {
+        if (playerEquals(players[i], updatedPlayer)){
+            players[i] = updatedPlayer;
+        }
+    }
+    showPlayers();
+    console.log("updated");
+})
+
+function playerEquals(a, b) {
+    if (a.name == b.name && a.isHost == b.isHost && a.bodypart == b.bodypart) {
+        return true
+    } else {
+        return false
+    }
+} 
 

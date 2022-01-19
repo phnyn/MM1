@@ -1,35 +1,63 @@
 let brushButton, eraserButton, clearButton, sizeSlider, colorPicker, undoButton, redoButton;
 let strokeColor = 'black';
+var socket;
+let canvas;
 
 function setup() {
+    socket = io.connect('http://localhost:3000');
+    socket.on('redirect', () => {
+        window.location.href = "final.html";
+    })
+
+    
     let height = document.getElementById("myCanvas").clientHeight;
     let width = document.getElementById("myCanvas").clientWidth;
 
-    let canvas = createCanvas(width, height);
+    canvas = createCanvas(width, height);
     canvas.parent('myCanvas');
     background(255);
 
+<<<<<<< Updated upstream
     brushButton = createImg('./img/icons/paint-brush.png');
+=======
+    brushButton = createImg('./img/icons/paint-brush.png',"");
+>>>>>>> Stashed changes
     brushButton.size(30,30);
     brushButton.parent('brushBtn');
     brushButton.mousePressed(noErase);
 
+<<<<<<< Updated upstream
     eraserButton = createImg('./img/icons/eraser.png');
+=======
+    eraserButton = createImg('./img/icons/eraser.png',"");
+>>>>>>> Stashed changes
     eraserButton.size(30,30);
     eraserButton.parent('eraseBtn');
     eraserButton.mousePressed(erase);
 
+<<<<<<< Updated upstream
     clearButton = createImg('./img/icons/bin.png');
+=======
+    clearButton = createImg('./img/icons/bin.png',"");
+>>>>>>> Stashed changes
     clearButton.size(30,30);
     clearButton.parent('clearBtn');
     clearButton.mousePressed(clearBG);
 
+<<<<<<< Updated upstream
     undoButton = createImg('./img/icons/undo.png');
+=======
+    undoButton = createImg('./img/icons/undo.png',"");
+>>>>>>> Stashed changes
     undoButton.size(30,30);
     undoButton.parent('undoBtn');
     undoButton.mousePressed(undoToPrevState);
 
+<<<<<<< Updated upstream
     redoButton = createImg('./img/icons/redo.png');
+=======
+    redoButton = createImg('./img/icons/redo.png',"");
+>>>>>>> Stashed changes
     redoButton.size(30,30);
     redoButton.parent('redoBtn');
     redoButton.mousePressed(redoPrevState);
@@ -45,6 +73,8 @@ function setup() {
     smooth();
 
     saveState();
+
+    
 }
 
 function draw() {
@@ -109,9 +139,23 @@ function redoPrevState() {
     image(redoState, 0, 0);
 }
 
+<<<<<<< Updated upstream
 function canvasToURL(){
     return canvas.toDataURL();
 }
+=======
+function ready() {
+    let currentPlayer = window.location.href.split('?').pop();
+    let cvs = canvas.elt.toDataURL();
+    canvasWithPlayer = {
+        cvs: cvs,
+        player: currentPlayer
+    }
+    socket.emit('ready', canvasWithPlayer);
+}
+
+//document.getElementById("readyBtn").addEventListener("click", ready);
+>>>>>>> Stashed changes
 
 function isBlank() {
     return canvas.toDataURL() === document.getElementById('blank').toDataURL();

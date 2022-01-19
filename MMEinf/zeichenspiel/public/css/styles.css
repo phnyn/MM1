@@ -17,7 +17,11 @@ body {
 
 #main{
     /*background-color: rgba(201, 243, 243, 0.2);*/
+<<<<<<< Updated upstream
     background-color: rgba(154, 250, 250, 0.2);
+=======
+    background-color: rgba(201, 243, 243, 0.2);
+>>>>>>> Stashed changes
     border-radius: 10px;
     width: 1000px;
     height: 615px;
@@ -128,12 +132,15 @@ background-color: rgba(238, 255, 255, 0.511);
     height: 85%;
 }
 
+<<<<<<< Updated upstream
 #indexBtn {
     position: relative;
     bottom: 2px;
     padding: 11px 10px;
 }
 
+=======
+>>>>>>> Stashed changes
 /* - - - - - - - - - - - - - - -  leftbody container - - - - - - - - - - - - - - -  */
 #canvaContainer{
     height: 80%;
@@ -147,11 +154,16 @@ background-color: rgba(238, 255, 255, 0.511);
 
 /* DRAWING.HTML */
 #canvaContainer > #myCanvas{
+<<<<<<< Updated upstream
 
     /*height: 91.5%;*/
     /*width: 94.5%;*/
     height: 420px;
     width: 690px;
+=======
+    height: 100%;
+    width: 100%;
+>>>>>>> Stashed changes
     background-color: rgb(255, 255, 255);
 
     position: absolute;
@@ -208,6 +220,10 @@ input[type=slider] {
 }
 
 #toolContainer{
+<<<<<<< Updated upstream
+=======
+    margin-top: 0px;
+>>>>>>> Stashed changes
     height: 14%;
 }
 
@@ -280,17 +296,27 @@ span{
 
 .circle{
     float: left;
+<<<<<<< Updated upstream
     margin-left: 10px;
     margin-top: 10px;
     height: 120px;
     width: 120px;
+=======
+    margin-left: 20px;
+    margin-top: 20px;
+    width:40%;
+    /*height:50%;*/
+>>>>>>> Stashed changes
     font-size:15px;
     font-weight: bold;
     color:#e83b80;
     text-align:center;
     line-height:20px;
     border-radius:50%;
+<<<<<<< Updated upstream
     padding: 19% 0;
+=======
+>>>>>>> Stashed changes
     background:rgba(201, 243, 243, 1);
     border: 1px solid rgba(0, 0, 0, 0.1);
     box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
