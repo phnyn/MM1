@@ -12,8 +12,8 @@ function preload() {
 }
 
 function setup() {
-  let width = 690*0.24;
-  let height = 420*4*0.24;
+  let width = 690*0.37;
+  let height = 420*4*0.37;
   let cvs = createCanvas(width, height);
   cvs.parent('final');
 }
@@ -22,7 +22,7 @@ function draw() {
   for(let i = 0; i < 4; i++){
     setTimeout(display, 100);
     function display() {
-      image(drawings[i], 0, 0+i*height/4, width, height/4);
+      image(drawings[i], 0, i * height/4, width, height/4);
     }
   }
 }
