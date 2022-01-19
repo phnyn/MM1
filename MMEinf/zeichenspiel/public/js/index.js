@@ -42,7 +42,7 @@ function isHost(){
         document.getElementById('indexTxt').innerHTML =" ";
         document.getElementById('indexBtn').innerHTML ="Host Game";
     } else {
-        document.getElementById('indexTxt').innerHTML ="You got invited!";
+        document.getElementById('indexTxt').innerHTML ="You got invited to play!";
         document.getElementById('indexBtn').innerHTML ="Join Game";
     }
 }
