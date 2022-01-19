@@ -1,7 +1,5 @@
-let brushButton, eraserButton, clearButton, lineButton, sizeSlider, colorPicker, undoButton, pickButton, redoButton;
+let brushButton, eraserButton, clearButton, sizeSlider, colorPicker, undoButton, redoButton;
 let strokeColor = 'black';
-
-// let markButton;
 
 function setup() {
     let height = document.getElementById("myCanvas").clientHeight;
@@ -44,16 +42,12 @@ function setup() {
     colorPicker.size(30, 30)
     colorPicker.parent('colorpickerBtn');
 
-    // markButton = createButton('TEST');
-    // markButton.size(30,30);
-    // markButton.parent('markBtn');
-    // markButton.mousePressed(setImageVisible('mark', 'hidden'));
+    smooth();
 
     saveState();
 }
 
 function draw() {
-    //TODO change to curve()?
     if(mouseIsPressed){
         line(mouseX, mouseY, pmouseX, pmouseY);
         cursor(CROSS);
@@ -65,10 +59,6 @@ function draw() {
     stroke(colorPicker.color());
 }
 
-function cursorHand() {
-    cursor(HAND);
-}
-
 function clearBG() {
     background(255);
 }
@@ -78,12 +68,6 @@ let redoState = null;
 let redone = false;
 
 function keyPressed(e) {
-    //TODO shift+strg+z redo?
-
-    // if (e.keyCode === 90 && (e.ctrlKey || e.metaKey) && (e.shiftKey)) {
-    //     redoToPreviousState();
-    // }
-
     if (e.keyCode === 90 && (e.ctrlKey || e.metaKey)) {
         undoToPrevState();
     }

@@ -211,6 +211,10 @@ input[type=slider] {
     height: 14%;
 }
 
+/*#toolContainer:hover{*/
+
+/*}*/
+
 /* SETTING.HTML */
 #settingContainer {
     position: relative;
