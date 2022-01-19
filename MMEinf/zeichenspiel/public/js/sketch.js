@@ -1,5 +1,6 @@
 let brushButton, eraserButton, clearButton, sizeSlider, colorPicker, undoButton, redoButton;
 let strokeColor = 'black';
+let canvas;
 
 function setup() {
     socket = io.connect('http://localhost:3000');
@@ -10,7 +11,7 @@ function setup() {
     let height = document.getElementById("myCanvas").clientHeight;
     let width = document.getElementById("myCanvas").clientWidth;
 
-    let canvas = createCanvas(width, height);
+    canvas = createCanvas(width, height);
     canvas.parent('myCanvas');
     background(255);
 
@@ -119,7 +120,7 @@ function canvasToURL(){
 }
 
 function isBlank() {
-    return canvas.toDataURL() === document.getElementById('blank').toDataURL();
+    return canvas.elt.toDataURL() === document.getElementById('blank').toDataURL();
 }
 
 function ready() {

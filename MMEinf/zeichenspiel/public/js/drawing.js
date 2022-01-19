@@ -32,31 +32,26 @@ window.onload = function () {
                 currentPlayer = players[i];
             }
         }
+        // set marks according to currentPlayer
+        let markImg;
+        if (currentPlayer.bodypart === body.head){
+            markImg = "img/marks/head.png";
+        } else if (currentPlayer.bodypart === body.upper) {
+            markImg = "img/marks/torso.png";
+        } else if (currentPlayer.bodypart === body.lower) {
+            markImg = "img/marks/legs.png";
+        } else if (currentPlayer.bodypart === body.feet) {
+            markImg = "img/marks/feet.png";
+        }
+
+        changeImage(markImg);
         showPlayers();
         countdownTimer(playersAndTime.time * 60);
         // showBodypart();
     });
 
-    //currentPlayer = "A";
-    currentPlayer = getCurrentPlayer();
 
-    // set marks according to currentPlayer
-    let markImg;
-    if (currentPlayer.bodypart === body.head){
-        markImg = "img/marks/head.png";
-    } else if (currentPlayer.bodypart === body.upper) {
-        markImg = "img/marks/torso.png";
-    } else if (currentPlayer.bodypart === body.lower) {
-        markImg = "img/marks/legs.png";
-    } else if (currentPlayer.bodypart === body.feet) {
-        markImg = "img/marks/feet.png";
-    }
-
-    changeImage(markImg);
-
-    showPlayers();
-    countdownTimer(30);
-    showBodypart();
+    
 };
 
 
@@ -201,10 +196,9 @@ function showBodypart(){
  * changes the status of the player to ready
  * TODO: currently for the current player!
  */
-function ready(){
-    let player = getCurrentPlayer();
+ function ready2(){
+    let player = currentPlayer
     let position = getIndex(player);
-
     if(player.ready === false){
         let element = document.getElementById('body-'+position);
         element.getElementsByTagName('img')[0].classList.add('ready');
