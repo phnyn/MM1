@@ -132,3 +132,7 @@ function ready() {
     }
     socket.emit('ready', canvasWithPlayer);
 }
+
+function save() {
+    saveCanvas(canvas, 'drawtogether', jpg);
+}
