@@ -1,7 +1,7 @@
 //import {body} from "./body.js";
 
 /* list of players */
-let players;
+let players = [];
 
 /* max time */
 let timer;
@@ -17,15 +17,25 @@ const body = {
     feet: "feet"
 };
 
-window.onload = function () {
-    /* TODO: entfernen! nur für Testzwecke*/
-    const a = new Player("Arnold", false, false, body.head,false);
-    const b = new Player("Bernd", false, true, body.upper, false);
-    const c = new Player("Claudia", true, false, body.lower, false);
-    const d = new Player("Diona", false, false, body.feet, true);
+var cP;
+var socket = io.connect('http://localhost:3000');
 
-    // players = ["A", "B", "C","D"];
-    players = [a,b,c,d];
+window.onload = function () {
+    cP = window.location.href.split('?').pop();
+    socket.emit("getPlayersWithBodyPartsAndTime");
+    socket.on("getPlayersWithBodyPartsAndTime", (playersAndTime) => {
+        players = playersAndTime.players;
+        for (let i = 0; i < players.length; i++){
+            players[i].currentPlayer = false;
+            if (players[i].name === cP) {
+                players[i].currentPlayer = true;
+                currentPlayer = players[i];
+            }
+        }
+        showPlayers();
+        countdownTimer(playersAndTime.time * 60);
+        // showBodypart();
+    });
 
     //currentPlayer = "A";
     currentPlayer = getCurrentPlayer();
@@ -99,7 +109,9 @@ function startCountDown(duration, element) {
 
         secondsRemaining = secondsRemaining - 1;
         if (secondsRemaining < 0) {
-             clearInterval(countInterval) 
+            clearInterval(countInterval)
+            let btn = document.getElementById("readyBtn");
+            btn.click();
         }
     }, 1000);
 }
@@ -114,9 +126,7 @@ function setImageVisible(id) {
         document.getElementById('markBtn').style.filter = "brightness(2.9) saturate(0.15) hue-rotate(110deg)";
     } else {
         document.getElementById('markBtn').style.filter = " invert() brightness(2.9) saturate(0.15) hue-rotate(110deg)";
-
     }
-
 }
 
 function changeImage(a) {
@@ -201,6 +211,7 @@ function ready(){
         element.getElementsByClassName('painting')[0].innerHTML = " R E A D Y !";
         player.ready = true;
     }
+    socket.emit("playerIsRdy", currentPlayer);
 }
 
 /**
@@ -281,3 +292,21 @@ function getIndex(player){
     return position;
 }*/
 
+socket.on("updateOnPlayer", (updatedPlayer) => {
+    console.log("received playerchange!");
+    for (let i = 0; i < players.length; i++) {
+        if (playerEquals(players[i], updatedPlayer)){
+            players[i] = updatedPlayer;
+        }
+    }
+    showPlayers();
+    console.log("updated");
+})
+
+function playerEquals(a, b) {
+    if (a.name == b.name && a.isHost == b.isHost && a.bodypart == b.bodypart) {
+        return true
+    } else {
+        return false
+    }
+}

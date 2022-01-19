@@ -1,11 +1,17 @@
-import Player from "./player.js";
-let uName;
+var socket = io.connect('http://localhost:3000');
+let player, uName;
 
-let player;
-
-window.onload = function(){
+window.onload = function() {
     player = new Player("",true,true,"",false);
-    isHost();
+    socket.emit("host");
+    socket.on("host", () => {
+        player.isHost = true;
+        isHost();
+    });
+    socket.on("notHost", () => {
+        player.isHost = false;
+        isHost();
+    })
 }
 
 /**
@@ -17,6 +23,13 @@ function enterNickname(){
     alert(uName);
 }
 
+function redirectLobby() {
+    socket.emit("playerdata", (player));
+    window.location.href = 'setting.html';
+    console.log(window.location);
+    alert(window.location.href);
+}
+
 /**
  * checks if user is host or an invited player and displays text
  */
@@ -24,11 +37,13 @@ function isHost(){
     if(player.isHost == true){
         document.getElementById('indexTxt').innerHTML =" ";
         document.getElementById('indexBtn').innerHTML ="SPIEL HOSTEN";
-    }else{
+    } else {
         document.getElementById('indexTxt').innerHTML ="Du wurdest eingeladen!";
         document.getElementById('indexBtn').innerHTML ="SPIEL BEITRETEN";
     }
 }
+
+
 
 function Player(name, currentPlayer, isHost, bodypart, ready){
     this.name = name;

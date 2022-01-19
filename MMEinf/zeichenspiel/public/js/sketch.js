@@ -2,6 +2,11 @@ let brushButton, eraserButton, clearButton, sizeSlider, colorPicker, undoButton,
 let strokeColor = 'black';
 
 function setup() {
+    socket = io.connect('http://localhost:3000');
+    socket.on('redirect', () => {
+        window.location.href = "final.html";
+    });
+
     let height = document.getElementById("myCanvas").clientHeight;
     let width = document.getElementById("myCanvas").clientWidth;
 
@@ -115,4 +120,14 @@ function canvasToURL(){
 
 function isBlank() {
     return canvas.toDataURL() === document.getElementById('blank').toDataURL();
+}
+
+function ready() {
+    let currentPlayer = window.location.href.split('?').pop();
+    let cvs = canvas.elt.toDataURL();
+    canvasWithPlayer = {
+        cvs: cvs,
+        player: currentPlayer
+    }
+    socket.emit('ready', canvasWithPlayer);
 }

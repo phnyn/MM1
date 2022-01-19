@@ -12,12 +12,12 @@ function preload() {
 }
 
 function setup() {
-  let width = document.getElementById("masterpiece").clientWidth;
-  let height = document.getElementById("masterpiece").clientHeight;
+  let width = 350
+  let height = 400
   let cvs = createCanvas(width, height);
-  cvs.parent('masterpiece');
+  cvs.parent('final');
 }
-  
+
 function draw() {
   for(let i = 0; i < 4; i++){
     setTimeout(display, 100);

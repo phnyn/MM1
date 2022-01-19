@@ -2,38 +2,55 @@
 let time, bodypart;
 
 /* list of players */
-let players;
+let players = [];
 
 /* the current player/owner of window */
 let currentPlayer;
 
 // TODO: DELETE
-let testPlayer, testPlayer2;
+let testPlayer;
 
 /* div container of players */
 let playersDIV;
+
+var socket = io.connect('http://localhost:3000');
 
 /* calls the function init upon window loading */
 window.onload = function (){
     playersDIV = document.getElementById('players');
     //players  = ["Arnold", "Bernd", "Claudia", "Diona"];
 
-    const a = new Player("Alexander", false, false,"",false);
-    const b = new Player("Paul", true ,true,"", false);
-    const c = new Player("Phuong", false , false,"", false);
-    const d = new Player("Sebastian", false, false,"", false);
+    socket.emit("getPlayers")
+    socket.on("getCurrentPlayer", cPlayer => {
+        currentPlayer = cPlayer;
+    })
+    socket.on("getPlayers", (playerarr) => {
+        players = playerarr;
+        for (let i = 0; i<playerarr.length; i++){
+            if (!playerEquals(players[i], currentPlayer)) {
+                players[i].currentPlayer = false;
+            }
+        }
 
-    currentPlayer = b;
+        showPlayers();
+    })
+    /*
+    const a = new Player("Arnold", true, true,"",false);
+    const b = new Player("Bernd", false, false,"", false);
+    const c = new Player("Claudia", false , false,"", false);
+    const d = new Player("Diona", false, false,"", false);
+
+    currentPlayer = a;
 
     //TODO DELETE
-    testPlayer = new Player("Frieda", false,false,"",false);
-    testPlayer2 = new Player("Alberto", false,false,"",false);
+    testPlayer = new Player("Frederick", false,false,"",false);
 
     players = [a,b,c,d];
+    */
     inviteLink("drawtogether.com/invite/1234");
-    showPlayers();
-    displayStart();
 }
+
+
 
 /* P L A Y E R */
 
@@ -42,43 +59,30 @@ window.onload = function (){
  * Only Host can see the kick buttons
  */
 function showPlayers(){
-    let element;
-    //playersDIV.innerHTML = '';
-    for(let i = 0; i<4;i++){
-        //let content = players[i].name + role + kickBtn;
-        let waiting = "waiting <span>.</span><span>.</span><span>.</span>";
-        element = document.getElementById('p'+i);
-        element.classList.add("greyout");
-        element.getElementsByClassName('playerContent')[0].innerHTML = '';
-        element.getElementsByClassName('waiting')[0].innerHTML = waiting;
-    }
-    
-    for(let i=0; i < players.length; i++){
-        let kickBtn = "<br/><span class=\" kickBtn \" onclick=\"kickPlayer('"+players[i].name+"')\">X</span>";
-        let role = "";
-        element = document.getElementById('p'+i);
+    playersDIV.innerHTML = '';
 
-        if(players[i].currentPlayer){
-            kickBtn =" ";
-            role ="(you)";
-        }
+    for(let i = 0; i < players.length; i++){
+
+        let kickBtn = " <span class=\" kickBtn \" onclick=\"kickPlayer('"+players[i]+"')\">X</span>";
+        let role = "";
 
         if(players[i].isHost){
             role = "(host)";
             kickBtn =" ";
         }
 
-        if(!currentPlayer.isHost){
+        if(players[i].currentPlayer){
             kickBtn =" ";
+            role ="(you)";
         }
 
-        let content = players[i].name  + role + kickBtn;
-        element.getElementsByClassName('playerContent')[0].innerHTML = content;
-        element.getElementsByClassName('waiting')[0].innerHTML = '';
-        element.classList.remove('greyout');
+        if(currentPlayer.isHost != true){ //only host can see kick buttons
+            kickBtn = " ";
+        }
+
+        playersDIV.innerHTML += "<div id=\"p"+i+"\" class=\"circle\">"+ players[i].name + role + kickBtn+"</div>";
     }
 }
-
 /**
  * Adds [player] to the list of players
  * @param {String} player - new player
@@ -93,19 +97,24 @@ function addPlayer(player){
  * Removes [player] from the list of players
  * @param {String} player - player to be kicked
  */
- function kickPlayer(player){
+function kickPlayer(player){
     let position;
-	
+
     for(let j=0; j < players.length; j++){
-        if(players[j].name == player){
+        if(players[j] == player){
             position = j;
         }
-    }	
-	let id= "p"+position;
-	let div = document.getElementById(id);
-	
-	    //delete 1 element at [position] in players
+    }
+    socket.emit("kickHelper", players[position]);
+    socket.on("kickHelper", player => {
+        if (playerEquals(currentPlayer, player)){
+            socket.emit("kickMe");
+        }
+    })
+
+    //delete 1 element at [position] in players
     players.splice(position,1);
+
     showPlayers();
 }
 
@@ -113,7 +122,7 @@ function addPlayer(player){
 
 /**
  * Changes value of the element #inviteLink to [link]
- * @param {string} link 
+ * @param {string} link
  */
 function inviteLink(link){
     let inviteDiv = document.getElementById('inviteLink');
@@ -127,7 +136,7 @@ function copyLink(){
     let copyText = document.getElementById('inviteLink');
     copyText.select();
     navigator.clipboard.writeText(copyText.value);
-    // alert("Copied: " + copyText.value);
+    alert("Copied: " + copyText.value);
 }
 
 /**
@@ -135,22 +144,20 @@ function copyLink(){
  * TODO: time & bodypart where?
  */
 function startGame(){
+    //let select = document.getElementById('settingBodypart');
+    //bodypart = select.options[select.selectedIndex].value;
+
     let select = document.getElementById('settingTime');
-    time = select.options[select.selectedIndex].value;
-    
+    let time = select.options[select.selectedIndex].value;
     alert(time);
+    socket.emit("start", time);
+
 }
 
-function displayStart(isHost){
-    let select = document.getElementById('settingTime');
-    time = select.options[select.selectedIndex].value;
-
-    if(!currentPlayer.isHost){
-        document.getElementById('minute').innerHTML = "<br/>" + time + " min<br>";
-        document.getElementById('settingTime').style="display:none";
-        document.getElementById('startBtn').style="display:none";
-    }
-}
+socket.on("redirect", () => {
+    socket.emit("fromCurrentPlayer", (players));
+    window.location.href = "drawing.html?"+currentPlayer.name;
+})
 
 function Player(name, currentPlayer, isHost, bodypart, ready){
     this.name = name;
@@ -158,4 +165,12 @@ function Player(name, currentPlayer, isHost, bodypart, ready){
     this.isHost = isHost;
     this.bodypart = bodypart;
     this.ready = ready;
+}
+
+function playerEquals(a, b) {
+    if (a.name == b.name && a.isHost == b.isHost && a.bodypart == b.bodypart && a.ready == b.ready) {
+        return true
+    } else {
+        return false
+    }
 }
