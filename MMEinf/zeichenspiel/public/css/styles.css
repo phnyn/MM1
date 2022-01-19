@@ -99,14 +99,17 @@ button {
   vertical-align: baseline;
   width: auto;
     background: rgba(200, 233, 233, 1);
-    /*background: rgba(201, 223, 233, 1);*/
 }
 
-button:hover{
-background-color: rgba(238, 255, 255, 0.511);
+button:active{
+background-color: rgba(238, 255, 255, 0.911);
   border-color: rgba(0, 0, 0, 0.185);
   box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
   color: rgba(0, 0, 0, 0.65);
+}
+
+button:disabled {
+    opacity: 50%;
 }
 
 /* - - - - - - - - - - - - - - -  whole body container - - - - - - - - - - - - - - -  */
@@ -180,16 +183,7 @@ background-color: rgba(238, 255, 255, 0.511);
     position: relative;
     margin-right: -125px;
 
-    /*background: #fcfff4;*/
-    /*background: -webkit-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);*/
-    /*background: -moz-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);*/
-    /*background: -o-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);*/
-    /*background: -ms-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);*/
-    /*background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);*/
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfff4', endColorstr='#b3bead',GradientType=0 );
-    /*-webkit-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);*/
-    /*-moz-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);*/
-    /*box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);*/
 }
 #markLabel {
     position: relative;

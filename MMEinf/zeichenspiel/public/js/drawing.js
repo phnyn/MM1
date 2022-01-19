@@ -47,7 +47,6 @@ window.onload = function () {
         changeImage(markImg);
         showPlayers();
         countdownTimer(playersAndTime.time * 60);
-        // showBodypart();
     });
 };
 
@@ -97,10 +96,9 @@ function startCountDown(duration, element) {
         element.textContent = `${paddedFormat(min)}:${paddedFormat(sec)}`;
 
         secondsRemaining = secondsRemaining - 1;
-        if (secondsRemaining < 0) {
+        if (secondsRemaining <= 0) {
             clearInterval(countInterval)
-            let btn = document.getElementById("readyBtn");
-            btn.click();
+            document.getElementById("readyBtn").click();
         }
     }, 1000);
 }
@@ -198,6 +196,7 @@ function showBodypart(){
         player.ready = true;
     }
     socket.emit("playerIsRdy", currentPlayer);
+    document.getElementById('readyBtn').disabled = true;
 }
 
 /**
@@ -243,7 +242,7 @@ socket.on("updateOnPlayer", (updatedPlayer) => {
 })
 
 function playerEquals(a, b) {
-    if (a.name == b.name && a.isHost == b.isHost && a.bodypart == b.bodypart) {
+    if (a.name === b.name && a.isHost === b.isHost && a.bodypart === b.bodypart) {
         return true
     } else {
         return false
