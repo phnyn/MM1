@@ -7,9 +7,6 @@ let players = [];
 /* the current player/owner of window */
 let currentPlayer;
 
-// TODO: DELETE
-let testPlayer;
-
 /* div container of players */
 let playersDIV;
 
@@ -18,7 +15,6 @@ var socket = io.connect('http://localhost:3000');
 /* calls the function init upon window loading */
 window.onload = function (){
     playersDIV = document.getElementById('players');
-    //players  = ["Arnold", "Bernd", "Claudia", "Diona"];
 
     socket.emit("getPlayers")
     socket.on("getCurrentPlayer", cPlayer => {
@@ -34,23 +30,8 @@ window.onload = function (){
         displayStart();
         showPlayers();
     })
-    /*
-    const a = new Player("Arnold", true, true,"",false);
-    const b = new Player("Bernd", false, false,"", false);
-    const c = new Player("Claudia", false , false,"", false);
-    const d = new Player("Diona", false, false,"", false);
-
-    currentPlayer = a;
-
-    //TODO DELETE
-    testPlayer = new Player("Frederick", false,false,"",false);
-
-    players = [a,b,c,d];
-    */
     inviteLink("http://localhost:3000");
 }
-
-
 
 /* P L A Y E R */
 
@@ -60,9 +41,7 @@ window.onload = function (){
  */
 function showPlayers(){
     let element;
-    //playersDIV.innerHTML = '';
     for(let i = 0; i<4;i++){
-        //let content = players[i].name + role + kickBtn;
         let waiting = "waiting <span>.</span><span>.</span><span>.</span>";
         element = document.getElementById('p'+i);
         element.classList.add("greyout");
@@ -155,17 +134,11 @@ function copyLink(){
 
 /**
  * Starts the game with the selected settings
- * TODO: time & bodypart where?
  */
 function startGame(){
-    //let select = document.getElementById('settingBodypart');
-    //bodypart = select.options[select.selectedIndex].value;
-
     let select = document.getElementById('settingTime');
     let time = select.options[select.selectedIndex].value;
-    // alert(time);
     socket.emit("start", time);
-
 }
 
 function displayStart(isHost){

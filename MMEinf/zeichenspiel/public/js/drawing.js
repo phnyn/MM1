@@ -49,13 +49,7 @@ window.onload = function () {
         countdownTimer(playersAndTime.time * 60);
         // showBodypart();
     });
-
-
-
 };
-
-
-
 
 /* COUNTDOWN TIMER */
 //https://www.delftstack.com/de/howto/javascript/count-down-timer-in-javascript/
@@ -112,7 +106,6 @@ function startCountDown(duration, element) {
 }
 
 /* Zeichenbegrenzung */
-
 function setImageVisible(id) {
     let img = document.getElementById(id);
     img.style.visibility = (document.getElementById('markBtn').checked ? 'visible' : 'hidden');
@@ -194,7 +187,6 @@ function showBodypart(){
 
 /**
  * changes the status of the player to ready
- * TODO: currently for the current player!
  */
  function ready2(){
     let player = currentPlayer
@@ -238,53 +230,6 @@ function getIndex(player){
     }
     return index;
 }
-
-/* P L A Y E R */
-
-/**
- * Displays all the players in the sidebar
- *
-function showPlayers(){
-    let painting, greyout;
-
-    for(let i=0; i < players.length; i++){
-
-        if(players[i] == currPlayer){
-            painting = ' ';
-            greyout =' ';
-        } else {
-            painting = 'zeichnet <span>.</span><span>.</span><span>.</span>'
-            greyout = 'greyout';
-        }
-
-        document.getElementById('body-'+i).innerHTML += 
-        '<img class="'+greyout+'" src="img/bodypart/'+i+'.png"></img>'+
-        '<span class="caption">'+players[i]+'</span><div class="painting">' + painting + '</div>';
-        }
-}
-
-// only ONE ready!
-function ready(){
-    let player = currentPlayer;
-    let position = getIndex(player);
-
-    if(isReady == false){
-        let element = document.getElementById('body-'+position);
-        element.getElementsByTagName('img')[0].classList.add('ready');
-        element.getElementsByClassName('painting')[0].innerHTML = "&#20; F E R T I G ! &#10004; ";
-        isReady = true;
-    }
-}
-
-function getIndex(player){
-    let position = 0;
-
-    for(let j=0; j < players.length; j++){
-        if(players[j] == player)
-            position =j;
-    }
-    return position;
-}*/
 
 socket.on("updateOnPlayer", (updatedPlayer) => {
     console.log("received playerchange!");

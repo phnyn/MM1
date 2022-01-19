@@ -44,8 +44,6 @@ function isHost(){
     }
 }
 
-
-
 function Player(name, currentPlayer, isHost, bodypart, ready){
     this.name = name;
     this.currentPlayer = currentPlayer;
