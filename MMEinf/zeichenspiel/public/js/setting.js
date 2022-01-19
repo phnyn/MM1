@@ -47,7 +47,7 @@ window.onload = function (){
 
     players = [a,b,c,d];
     */
-    inviteLink("drawtogether.com/invite/1234");
+    inviteLink("http://localhost:3000");
 }
 
 
@@ -114,13 +114,10 @@ function kickPlayer(player){
     let position;
 
     for(let j=0; j < players.length; j++){
-        if(players[j] == player){
+        if(players[j].name == player){
             position = j;
         }
     }
-
-    let id= "p"+position;
-	let div = document.getElementById(id);
 
     socket.emit("kickHelper", players[position]);
     socket.on("kickHelper", player => {
